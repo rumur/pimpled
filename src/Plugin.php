@@ -86,7 +86,7 @@ class Plugin extends Application
             NoticeAdmin::warning(
                 sprintf(
                     __('Minimal PHP version is required for %1$s plugin: <b>%2$s</b>.', PMLD_TD),
-                    Arr::get($app->pluginData(), 'name', static::NAME), $min_php
+                    $app->pluginData('name', static::NAME), $min_php
                 )
             );
             $app->is_compatible = false;
@@ -100,7 +100,7 @@ class Plugin extends Application
             NoticeAdmin::warning(
                 sprintf(
                     __('Minimal WP version is required for %1$s plugin: <b>%2$s</b>.', PMLD_TD),
-                    Arr::get($app->pluginData(), 'name', static::NAME), $min_wp
+                    $app->pluginData('name', static::NAME), $min_wp
                 )
             );
             $app->is_compatible = false;
