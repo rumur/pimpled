@@ -1,0 +1,36 @@
+{
+  "name": "pmld",
+  "type": "wordpress-plugin",
+  "description": "WP Plugin starter.",
+  "keywords": ["wordpress", "WP REST API", "OOP", "Pimple"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Rumur",
+      "email": "rumur.dev@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "pimple/pimple": "^3.0"
+  },
+  "autoload": {
+    "files": [
+      "app/helpers.php",
+      "src/helpers.php"
+    ],
+    "psr-4": {
+      "Pmld\\App\\": "app/",
+      "Pmld\\": "src/"
+    }
+  },
+  "require-dev": {
+    "filp/whoops": "^2.0",
+    "phpunit/phpunit": "^7.0"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  }
+}
