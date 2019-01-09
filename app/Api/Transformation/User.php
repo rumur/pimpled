@@ -70,7 +70,7 @@ class User extends Transformer
             ]
         );
 
-        return $this->hide($user_data);
+        return $this->process($user_data);
     }
 
     /**
