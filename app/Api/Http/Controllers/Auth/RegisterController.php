@@ -22,8 +22,6 @@ class RegisterController extends BaseController
             $this->request->get_body_params()
         );
 
-        \Pmld\td($input);
-
         $update = [
             'first_name',
             'last_name',
