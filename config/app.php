@@ -48,6 +48,7 @@ return [
         \Pmld\Foundation\Asset\AssetService::class,
     ], apply_filters('pmld.app_service_providers', [
         \Pmld\App\Migrations\Aggregator::class,
+        \Pmld\App\Assets\Aggregator::class,
     ] ) ),
 
     /*

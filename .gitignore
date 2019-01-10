@@ -12,6 +12,8 @@ vendor
 
 # Dev
 config-local.json
+yarn.lock
+composer.lock
 
 # Tests
 codeception.yml
