@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Providers;
+namespace Pmld\Http;
 
 use Pmld\Plugin;
 use Pimple\Container;

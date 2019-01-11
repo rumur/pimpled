@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Foundation\Http;
+namespace Pmld\Http;
 
 use \WP_REST_Request;
 use Pmld\Contracts\Http\Request as RequestContracts;
@@ -25,8 +25,8 @@ class Request extends WP_REST_Request implements RequestContracts
         $request->set_query_params(\wp_unslash($_GET));
         $request->set_body_params(\wp_unslash($_POST));
         $request->set_file_params($_FILES);
-        $request->set_headers(rest_get_server()->get_headers(\wp_unslash($_SERVER)));
-        $request->set_body(rest_get_server()->get_raw_data());
+        $request->set_headers(\rest_get_server()->get_headers(\wp_unslash($_SERVER)));
+        $request->set_body(\rest_get_server()->get_raw_data());
 
         return $request;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Foundation\Http\Controller;
+namespace Pmld\Http\Controller;
 
 use Pmld\Contracts\Http\Api\Response;
 
@@ -9,7 +9,7 @@ abstract class BaseController extends \WP_REST_Controller
     /** @var \WP_REST_Request request */
 	protected $request;
 
-    /** @var \Pmld\Foundation\Http\Response response */
+    /** @var \Pmld\Http\Response response */
 	protected $response;
 
 	/**

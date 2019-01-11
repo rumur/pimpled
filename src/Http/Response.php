@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Foundation\Http;
+namespace Pmld\Http;
 
 use \WP_Http as Status;
 use \WP_Error as Driver;

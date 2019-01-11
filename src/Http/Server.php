@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Foundation\Http;
+namespace Pmld\Http;
 
 class Server extends \WP_REST_Server
 {
