@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Foundation\Http\Exceptions;
+namespace Pmld\Http\Exceptions;
 
 use Pmld\Contracts\Http\RequestsException as RequestsExceptionContracts;
 

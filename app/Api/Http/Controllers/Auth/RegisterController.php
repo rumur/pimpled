@@ -2,9 +2,9 @@
 
 namespace Pmld\App\Api\Http\Controllers\Auth;
 
-use Pmld\App\Api\Transformation\User;
-use Pmld\Foundation\Http\Controller\BaseController;
-use Pmld\Foundation\Http\Exceptions\UnauthorizedException;
+use Pmld\App\Api\Transform\User;
+use Pmld\Http\Controller\BaseController;
+use Pmld\Http\Exceptions\UnauthorizedException;
 
 class RegisterController extends BaseController
 {
@@ -17,15 +17,15 @@ class RegisterController extends BaseController
      */
     public function register()
     {
-        $input = (object) array_intersect_key(
-            array_fill_keys(['username', 'password', 'email'], false),
-            $this->request->get_body_params()
+        $create_from = $this->request->get_body_params();
+
+        $input = (object) array_intersect_key( $create_from,
+            array_fill_keys(['username', 'password', 'email'], false)
         );
 
         $update = [
             'first_name',
             'last_name',
-            'name',
         ];
 
         /** @var \WP_Error|integer $user */
@@ -39,7 +39,7 @@ class RegisterController extends BaseController
         $user = \get_userdata($user_id);
 
         foreach ($update as $att) {
-            $user->$att = $input->$att;
+            $user->$att = $create_from[$att];
         }
 
         \wp_update_user($user);

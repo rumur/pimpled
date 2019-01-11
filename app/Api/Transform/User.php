@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\App\Api\Transformation;
+namespace Pmld\App\Api\Transform;
 
 use Pmld\Support\Transformer;
 

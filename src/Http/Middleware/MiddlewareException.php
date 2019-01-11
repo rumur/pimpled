@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Foundation\Http\Middleware;
+namespace Pmld\Http\Middleware;
 
 class MiddlewareException extends \Exception
 {

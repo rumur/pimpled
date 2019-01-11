@@ -1,19 +1,19 @@
 <?php
 
-namespace Pmld\Foundation\Http;
+namespace Pmld\Http;
 
 use Pimple\Container;
 use Pmld\Support\ServiceProvider;
 
-class RequestService extends ServiceProvider
+class ResponseService extends ServiceProvider
 {
     /**
      * @param Container $app
      */
     public function register(Container $app)
     {
-        $app['request'] = function () {
-          return Request::make();
+        $app['response'] = function () {
+          return new Response();
         };
     }
 }

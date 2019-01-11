@@ -2,9 +2,9 @@
 
 namespace Pmld\App\Api\Http\Controllers\Auth;
 
-use Pmld\App\Api\Transformation\User;
-use Pmld\Foundation\Http\Controller\BaseController;
-use Pmld\Foundation\Http\Exceptions\UnauthorizedException;
+use Pmld\App\Api\Transform\User;
+use Pmld\Http\Controller\BaseController;
+use Pmld\Http\Exceptions\UnauthorizedException;
 
 class MeController extends BaseController
 {

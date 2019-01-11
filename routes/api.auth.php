@@ -1,6 +1,6 @@
 <?php
 
-use Pmld\Foundation\Http\Route;
+use Pmld\Http\Route;
 
 /**
  * Register Auth Group of routes.

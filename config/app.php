@@ -42,9 +42,9 @@ return [
 
     'providers' => array_merge( [
         \Pmld\Notifications\Notice\NoticeService::class,
-        \Pmld\Foundation\Http\RequestService::class,
-        \Pmld\Foundation\Http\ResponseService::class,
-        \Pmld\Providers\RestRoutesService::class,
+        \Pmld\Http\RequestService::class,
+        \Pmld\Http\ResponseService::class,
+        \Pmld\Http\RestRoutesService::class,
         \Pmld\Foundation\Asset\AssetService::class,
     ], apply_filters('pmld.app_service_providers', [
         \Pmld\App\Migrations\Aggregator::class,

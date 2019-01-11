@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Foundation\Http\Middleware;
+namespace Pmld\Http\Middleware;
 
 use Pmld\Support\Facades\Request;
 
@@ -8,7 +8,7 @@ use Pmld\Contracts\Http\Api\Middleware as MiddlewareContract;
 
 abstract class Middleware implements MiddlewareContract {
 
-    /** @var \Pmld\Foundation\Http\Request */
+    /** @var \Pmld\Http\Request */
     protected $request;
 
     /**

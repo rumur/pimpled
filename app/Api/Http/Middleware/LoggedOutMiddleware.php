@@ -3,7 +3,7 @@
 namespace Pmld\App\Api\Http\Middleware;
 
 use Pmld\Contracts\Http\Request;
-use Pmld\Foundation\Http\Middleware\Middleware;
+use Pmld\Http\Middleware\Middleware;
 
 class LoggedOutMiddleware extends Middleware
 {

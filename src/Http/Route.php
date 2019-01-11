@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Foundation\Http;
+namespace Pmld\Http;
 
 use Pmld\Support\Facades\App;
 use Pmld\Support\Facades\Request;
