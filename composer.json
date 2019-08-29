@@ -1,8 +1,8 @@
 {
   "name": "pmld",
   "type": "wordpress-plugin",
-  "description": "WP Plugin starter.",
-  "keywords": ["wordpress", "WP REST API", "OOP", "Pimple"],
+  "description": "WP RAD package",
+  "keywords": ["wordpress", "WP REST API", "OOP", "DI"],
   "license": "MIT",
   "authors": [
     {
@@ -17,11 +17,11 @@
   "autoload": {
     "files": [
       "app/helpers.php",
-      "src/helpers.php"
+      "src/Support/helpers.php"
     ],
     "psr-4": {
       "Pmld\\App\\": "app/",
-      "Pmld\\": "src/"
+      "Rumur\\Pimpled\\": "src/"
     }
   },
   "require-dev": {

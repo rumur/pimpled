@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Foundation\Asset;
+namespace Rumur\Pimpled\Foundation\Asset;
 
 use Exception;
 

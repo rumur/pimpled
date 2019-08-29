@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Foundation;
+namespace Rumur\Pimpled\Foundation;
 
 class Uninstall
 {
@@ -9,7 +9,7 @@ class Uninstall
      *
      * @uses do_action()
      */
-	public static function start()
+	public static function run()
 	{
 		if (! defined('WP_UNINSTALL_PLUGIN')) {
 			exit;

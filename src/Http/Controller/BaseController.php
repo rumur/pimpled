@@ -1,15 +1,15 @@
 <?php
 
-namespace Pmld\Http\Controller;
+namespace Rumur\Pimpled\Http\Controller;
 
-use Pmld\Contracts\Http\Api\Response;
+use Rumur\Pimpled\Contracts\Http\Api\Response;
 
 abstract class BaseController extends \WP_REST_Controller
 {
     /** @var \WP_REST_Request request */
 	protected $request;
 
-    /** @var \Pmld\Http\Response response */
+    /** @var \Rumur\Pimpled\Http\Response response */
 	protected $response;
 
 	/**

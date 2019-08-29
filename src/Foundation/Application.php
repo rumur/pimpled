@@ -1,15 +1,13 @@
 <?php
 
-namespace Pmld\Foundation;
+namespace Rumur\Pimpled\Foundation;
 
-use Closure;
-use Pimple\Container;
+use Rumur\Pimpled\Support\Arr;
+use Rumur\Pimpled\Support\Collection;
+use Rumur\Pimpled\Container\Container;
+use Rumur\Pimpled\Support\ServiceProvider;
 use Pimple\ServiceProviderInterface;
-
-use Pmld\Support\Arr;
-use Pmld\Support\Collection;
-use Pmld\Support\ServiceProvider;
-use Pmld\Contracts\Config\Repository as RepositoryContract;
+use Rumur\Pimpled\Contracts\Config\Repository as RepositoryContract;
 
 class Application extends Container
 {
@@ -19,11 +17,6 @@ class Application extends Container
      * @var string
      */
     const VERSION = '1.0.0';
-
-    /**
-     * @var Application
-     */
-    protected static $_instance = null;
 
     /**
      * Points to the Plugin directory
@@ -172,36 +165,8 @@ class Application extends Container
         $this->instance('path.public', $this->publicPath());
         $this->instance('path.database', $this->databasePath());
         $this->instance('path.resources', $this->resourcesPath());
+        $this->instance('path.views', $this->viewsPath());
         $this->instance('path.uploads', $this->uploadsPath());
-    }
-
-    /**
-     * @param Application $app
-     */
-    protected function setInstance(Application $app)
-    {
-        if (is_null(static::$_instance))
-            static::$_instance = $app;
-    }
-
-    /**
-     * @return Application|null
-     */
-    public static function getInstance()
-    {
-        return static::$_instance;
-    }
-
-    /**
-     * @param $key
-     * @param $value
-     * @return mixed
-     */
-    public function instance($key, $value)
-    {
-        $this->offsetSet($key, $value);
-
-        return $this->offsetGet($key);
     }
 
     /**
@@ -316,6 +281,18 @@ class Application extends Container
     }
 
     /**
+     * Get the path to the resources "views" directory.
+     *
+     * @param string $path
+     *
+     * @return string
+     */
+    public function viewsPath($path = '')
+    {
+        return $this->resourcesPath('views').($path ? DIRECTORY_SEPARATOR.$path : $path);
+    }
+
+    /**
      * Get the WordPress theme directory path.
      *
      * @param string $path  path to the directory
@@ -326,7 +303,7 @@ class Application extends Container
      *
      * @return string | array       Array returns only if type is "all"
      */
-    function themePath($path = '', $type = 'inherit')
+    public function themePath($path = '', $type = 'inherit')
     {
         $search_path = ($path ? DIRECTORY_SEPARATOR.$path : $path);
 
@@ -364,7 +341,8 @@ class Application extends Container
      */
     public function runningInConsole()
     {
-        return php_sapi_name() == 'cli' || php_sapi_name() == 'phpdbg';
+        return (defined('WP_CLI') && WP_CLI)
+            || in_array(PHP_SAPI, ['cli', 'phpdbg'], true);
     }
 
     /**
@@ -378,7 +356,7 @@ class Application extends Container
     }
 
     /**
-     * Determine if application is in local environment.
+     * Determine if application is running on production environment.
      *
      * @return bool
      */
@@ -388,13 +366,23 @@ class Application extends Container
     }
 
     /**
-     * Determine if application is in local environment.
+     * Determine if application is running on development environment.
      *
      * @return bool
      */
     public function isDevelopment()
     {
         return $this['env'] === 'development';
+    }
+
+    /**
+     * Determine if an application can use debug mode.
+     *
+     * @return bool
+     */
+    public function isDebug()
+    {
+        return (defined('WP_DEBUG') && WP_DEBUG) && ($this->isLocal() || $this->isDevelopment());
     }
 
     /**
@@ -484,7 +472,7 @@ class Application extends Container
     protected function bootProvider(ServiceProviderInterface $provider)
     {
         if (method_exists($provider, 'boot')) {
-            return call_user_func([$provider, 'boot']);
+            return $provider->boot();
         }
     }
 
@@ -527,6 +515,9 @@ class Application extends Container
      * classes.
      *
      * @param array $bootstrappers
+     *
+     * @hook pmld.bootstrapping.{$bootstrapper}
+     * @hook pmld.bootstrapped.{$bootstrapper}
      *
      * @uses \do_action()
      */
@@ -616,7 +607,7 @@ class Application extends Container
      */
     public function runningUnitTests()
     {
-        return $this['env'] == 'testing';
+        return $this['env'] === 'testing';
     }
 
     /**
@@ -687,12 +678,15 @@ class Application extends Container
      *
      * @param string $locale
      *
+     * @hook pmld.locale_updated
      * @uses \do_action()
+     * @uses \switch_to_locale()
      */
     public function setLocale($locale)
     {
         $this['config']->set('app.locale', $locale);
-        $this['translator']->setLocale($locale);
+
+        \switch_to_locale($locale);
 
         \do_action('pmld.locale_updated', $locale, $this);
     }
@@ -700,11 +694,14 @@ class Application extends Container
     /**
      * Get the application locale.
      *
+     * @param bool $short   Show short version of the app e.g. "de" instead of "de_DE"
      * @return string
      */
-    public function getLocale()
+    public function getLocale($short = false): string
     {
-        return $this['config']->get('app.locale');
+        $locale = $this['config']->get('app.locale');
+
+        return $short ? current(explode('_', $locale)) : $locale;
     }
 
     /**
@@ -714,9 +711,9 @@ class Application extends Container
      *
      * @return bool
      */
-    public function isLocale($locale)
+    public function isLocale($locale): bool
     {
-        return $this->getLocale() == $locale;
+        return $locale === $this->getLocale();
     }
 
     /**

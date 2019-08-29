@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Contracts\Database;
+namespace Rumur\Pimpled\Contracts\Database;
 
 interface Migration
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Pmld\Config;
+namespace Rumur\Pimpled\Config;
 
 use ArrayAccess;
-use Pmld\Support\Arr;
-use Pmld\Contracts\Config\Repository as ConfigContract;
+use Rumur\Pimpled\Support\Arr;
+use Rumur\Pimpled\Contracts\Config\Repository as ConfigContract;
 
 class Repository implements ArrayAccess, ConfigContract
 {

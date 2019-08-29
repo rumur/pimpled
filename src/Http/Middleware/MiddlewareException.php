@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Http\Middleware;
+namespace Rumur\Pimpled\Http\Middleware;
 
 class MiddlewareException extends \Exception
 {

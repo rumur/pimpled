@@ -1,8 +1,8 @@
 <?php
 
-namespace Pmld\Contracts\Http\Api;
+namespace Rumur\Pimpled\Contracts\Http\Api;
 
-use Pmld\Contracts\Http\Request;
+use Rumur\Pimpled\Contracts\Http\Request;
 
 Interface Middleware
 {

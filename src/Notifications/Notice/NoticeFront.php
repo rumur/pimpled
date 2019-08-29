@@ -1,5 +1,5 @@
 <?php
-namespace Pmld\Notifications\Notice;
+namespace Rumur\Pimpled\Notifications\Notice;
 
 class NoticeFront extends NoticeAdmin
 {

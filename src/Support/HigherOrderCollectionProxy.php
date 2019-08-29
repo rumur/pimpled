@@ -1,16 +1,16 @@
 <?php
 
-namespace Pmld\Support;
+namespace Rumur\Pimpled\Support;
 
 /**
- * @mixin \Pmld\Support\Collection
+ * @mixin \Rumur\Pimpled\Support\Collection
  */
 class HigherOrderCollectionProxy
 {
     /**
      * The collection being operated on.
      *
-     * @var \Pmld\Support\Collection
+     * @var \Rumur\Pimpled\Support\Collection
      */
     protected $collection;
 
@@ -24,7 +24,7 @@ class HigherOrderCollectionProxy
     /**
      * Create a new proxy instance.
      *
-     * @param  \Pmld\Support\Collection  $collection
+     * @param  \Rumur\Pimpled\Support\Collection  $collection
      * @param  string  $method
      * @return void
      */

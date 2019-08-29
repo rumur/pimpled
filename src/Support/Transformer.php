@@ -1,8 +1,9 @@
 <?php
 
-namespace Pmld\Support;
+namespace Rumur\Pimpled\Support;
 
-use Pmld\Contracts\Support\Transformable;
+use Rumur\Pimpled\Contracts\Support\Arrayable;
+use Rumur\Pimpled\Contracts\Support\Transformable;
 
 abstract class Transformer implements Transformable
 {
@@ -14,12 +15,13 @@ abstract class Transformer implements Transformable
     /**
      * Hides hidden fields within passed data
      *
-     * @param array $data
+     * @param Arrayable|array $data
      * @return array
      */
-    protected function process(array $data)
+    protected function process($data = []): array
     {
-        return array_diff_key($data, array_fill_keys($this->hidden, false));
+        return array_diff_key($data instanceof Arrayable ? $data->toArray() : $data,
+            array_fill_keys($this->hidden, false));
     }
 
     /**
@@ -27,7 +29,7 @@ abstract class Transformer implements Transformable
      *
      * @return array
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): array
     {
         return $this->toArray();
     }
@@ -38,7 +40,7 @@ abstract class Transformer implements Transformable
      * @param  int  $options
      * @return string
      */
-    public function toJson($options = 0)
+    public function toJson($options = 0): string
     {
         return json_encode($this->jsonSerialize(), $options);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Foundation;
+namespace Rumur\Pimpled\Foundation;
 
 class Activation
 {
@@ -9,7 +9,7 @@ class Activation
      *
      * @uses do_action()
 	 */
-	public static function start()
+	public static function run()
 	{
 	    $activation = new static();
 

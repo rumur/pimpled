@@ -1,22 +1,22 @@
 <?php
 
-namespace Pmld\Support\Facades;
+namespace Rumur\Pimpled\Support\Facades;
 
-use Pmld\Foundation\Application;
+use Rumur\Pimpled\Foundation\Application;
 
 abstract class Facade
 {
 	/**
 	 * The Application instance.
 	 *
-	 * @var \Pmld\Foundation\Application
+	 * @var \Rumur\Pimpled\Foundation\Application
 	 */
 	protected static $app;
 
 	/**
 	 * Set the service container for the facades.
 	 *
-     * @var \Pmld\Foundation\Application $app
+     * @var \Rumur\Pimpled\Foundation\Application $app
 	 */
 	public static function setFacadeApplication(Application $app)
 	{

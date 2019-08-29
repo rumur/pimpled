@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Support\Facades;
+namespace Rumur\Pimpled\Support\Facades;
 
 class Request extends Facade
 {

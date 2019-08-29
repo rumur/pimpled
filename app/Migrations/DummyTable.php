@@ -2,7 +2,7 @@
 
 namespace Pmld\App\Migrations;
 
-use Pmld\Database\Migration;
+use Rumur\Pimpled\Database\Migration;
 
 class DummyTable extends Migration
 {

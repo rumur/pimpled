@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Contracts\Support;
+namespace Rumur\Pimpled\Contracts\Support;
 
 interface Arrayable
 {

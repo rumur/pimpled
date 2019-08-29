@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Contracts\Http;
+namespace Rumur\Pimpled\Contracts\Http;
 
 interface RequestsException
 {

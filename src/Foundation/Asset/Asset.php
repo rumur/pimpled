@@ -1,8 +1,8 @@
 <?php
 
-namespace Pmld\Foundation\Asset;
+namespace Rumur\Pimpled\Foundation\Asset;
 
-use Pmld\Contracts\Assets\Asset as AssetContract;
+use Rumur\Pimpled\Contracts\Assets\Asset as AssetContract;
 
 class Asset implements AssetContract
 {

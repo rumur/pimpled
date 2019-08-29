@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Support\Facades;
+namespace Rumur\Pimpled\Support\Facades;
 
 /**
  * Class Response
@@ -11,10 +11,10 @@ namespace Pmld\Support\Facades;
  * @method static mixed|\WP_REST_Response forbidden(array $payload = null)
  * @method static mixed|\WP_REST_Response serverError(array $payload = null)
  * @method static mixed|\WP_REST_Response unAuthorized(array $payload = null)
- * @method static \Pmld\Http\Response add(array $payload)
+ * @method static \Rumur\Pimpled\Http\Response add(array $payload)
  * @method static mixed|\WP_REST_Response dispatchWith(array $payload, $status = null)
  *
- * @see namespace Pmld\Http\Response
+ * @see namespace Rumur\Pimpled\Http\Response
  */
 class Response extends Facade
 {

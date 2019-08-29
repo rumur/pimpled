@@ -1,9 +1,9 @@
 <?php
 
-namespace Pmld\Foundation\Asset;
+namespace Rumur\Pimpled\Foundation\Asset;
 
 use Pimple\Container;
-use Pmld\Support\ServiceProvider;
+use Rumur\Pimpled\Support\ServiceProvider;
 
 class AssetService extends ServiceProvider
 {
@@ -16,7 +16,7 @@ class AssetService extends ServiceProvider
     {
         $app['asset'] = function($app) {
             /**
-             * @var \Pmld\Foundation\Application $app
+             * @var \Rumur\Pimpled\Foundation\Application $app
              */
             $dist_uri = $app->getPublicUrl('dist');
             $manifest_path = $app->basePath('dist/mix-manifest.json');

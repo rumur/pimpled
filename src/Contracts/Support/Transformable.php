@@ -1,8 +1,8 @@
 <?php
 
-namespace Pmld\Contracts\Support;
+namespace Rumur\Pimpled\Contracts\Support;
 
-interface Transformable extends \JsonSerializable, Arrayable, Jsonable
+interface Transformable extends \JsonSerializable, Arrayable, Jsonable, Stringable
 {
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Support\Facades;
+namespace Rumur\Pimpled\Support\Facades;
 
 /**
  * Class Config
@@ -13,7 +13,7 @@ namespace Pmld\Support\Facades;
  * @method static void   push($key, $value)
  * @method static array  all()
  *
- * @see \Pmld\Config\Repository
+ * @see \Rumur\Pimpled\Config\Repository
  */
 class Config extends Facade
 {

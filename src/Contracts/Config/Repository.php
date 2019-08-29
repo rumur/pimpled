@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Contracts\Config;
+namespace Rumur\Pimpled\Contracts\Config;
 
 interface Repository
 {

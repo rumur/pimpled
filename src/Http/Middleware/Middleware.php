@@ -1,14 +1,14 @@
 <?php
 
-namespace Pmld\Http\Middleware;
+namespace Rumur\Pimpled\Http\Middleware;
 
-use Pmld\Support\Facades\Request;
+use Rumur\Pimpled\Support\Facades\Request;
 
-use Pmld\Contracts\Http\Api\Middleware as MiddlewareContract;
+use Rumur\Pimpled\Contracts\Http\Api\Middleware as MiddlewareContract;
 
 abstract class Middleware implements MiddlewareContract {
 
-    /** @var \Pmld\Http\Request */
+    /** @var \Rumur\Pimpled\Http\Request */
     protected $request;
 
     /**

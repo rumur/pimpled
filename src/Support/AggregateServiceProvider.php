@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Support;
+namespace Rumur\Pimpled\Support;
 
 use Pimple\Container;
 

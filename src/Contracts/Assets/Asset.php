@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Contracts\Assets;
+namespace Rumur\Pimpled\Contracts\Assets;
 
 interface Asset
 {

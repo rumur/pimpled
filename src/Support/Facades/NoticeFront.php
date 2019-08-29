@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Support\Facades;
+namespace Rumur\Pimpled\Support\Facades;
 
 /**
  * Class NoticeFront.
@@ -23,7 +23,7 @@ namespace Pmld\Support\Facades;
  * @method static hasSuccess()
  *
  *
- * @see \Pmld\Notifications\Notice\NoticeFront
+ * @see \Rumur\Pimpled\Notifications\Notice\NoticeFront
  */
 class NoticeFront extends Facade
 {

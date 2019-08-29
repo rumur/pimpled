@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Contracts\Queue;
+namespace Rumur\Pimpled\Contracts\Queue;
 
 interface Job
 {

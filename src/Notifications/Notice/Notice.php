@@ -1,8 +1,8 @@
 <?php
-namespace Pmld\Notifications\Notice;
+namespace Rumur\Pimpled\Notifications\Notice;
 
 use WP_Error;
-use Pmld\Contracts\Notice\Notice as NoticeContact;
+use Rumur\Pimpled\Contracts\Notice\Notice as NoticeContact;
 
 abstract class Notice implements NoticeContact
 {

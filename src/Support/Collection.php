@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Support;
+namespace Rumur\Pimpled\Support;
 
 use stdClass;
 use Countable;
@@ -12,11 +12,11 @@ use CachingIterator;
 use JsonSerializable;
 use IteratorAggregate;
 
-use Pmld\Contracts\Support\Arrayable;
-use Pmld\Contracts\Support\Jsonable;
+use Rumur\Pimpled\Contracts\Support\Arrayable;
+use Rumur\Pimpled\Contracts\Support\Jsonable;
 
-use function Pmld\value;
-use function Pmld\data_get;
+use function Rumur\Pimpled\value;
+use function Rumur\Pimpled\data_get;
 
 /**
  * @property-read HigherOrderCollectionProxy $average
@@ -466,7 +466,7 @@ class Collection implements ArrayAccess, Arrayable, Jsonable, Countable, Iterato
     /**
      * Get all items except for those with the specified keys.
      *
-     * @param  \Pmld\Support\Collection|mixed  $keys
+     * @param  \Rumur\Pimpled\Support\Collection|mixed  $keys
      * @return static
      */
     public function except($keys)
@@ -1880,7 +1880,7 @@ class Collection implements ArrayAccess, Arrayable, Jsonable, Countable, Iterato
     /**
      * Get a base Support collection instance from this collection.
      *
-     * @return \Pmld\Support\Collection
+     * @return \Rumur\Pimpled\Support\Collection
      */
     public function toBase()
     {

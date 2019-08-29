@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Support\Facades;
+namespace Rumur\Pimpled\Support\Facades;
 
 /**
  * Class NoticeAdmin.
@@ -24,7 +24,7 @@ namespace Pmld\Support\Facades;
  * @method static hasSuccess()
  *
  *
- * @see \Pmld\Notifications\Notice\NoticeAdmin
+ * @see \Rumur\Pimpled\Notifications\Notice\NoticeAdmin
  */
 class NoticeAdmin extends Facade
 {

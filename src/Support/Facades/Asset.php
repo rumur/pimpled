@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Support\Facades;
+namespace Rumur\Pimpled\Support\Facades;
 
 /**
  * Class Asset
@@ -8,7 +8,7 @@ namespace Pmld\Support\Facades;
  * @method static string get( $asset )
  * @method static string getKey( $asset )
  *
- * @see Pmld\Foundation\Asset\Asset
+ * @see Rumur\Pimpled\Foundation\Asset\Asset
  */
 class Asset extends Facade
 {

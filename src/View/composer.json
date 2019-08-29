@@ -1,0 +1,36 @@
+{
+  "name": "pimpled/view",
+  "description": "The Pimpled View package.",
+  "license": "MIT",
+  "homepage": "https://github.com/rumur/pimpled",
+  "support": {
+    "issues": "https://github.com/pimpled/framework/issues",
+    "source": "https://github.com/pimpled/framework"
+  },
+  "authors": [
+    {
+      "name": "Ruslan Murarov",
+      "email": "rumur.dev@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.0",
+    "pimpled/contracts": "1.*",
+    "pimpled/container": "1.*",
+    "pimpled/support": "1.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Rumur\\Pimpled\\View\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev"
+}

@@ -1,12 +1,9 @@
 <?php
 
-namespace Pmld\Support;
+namespace Rumur\Pimpled\Support;
 
 use \ArrayAccess;
 use \InvalidArgumentException;
-
-use function Pmld\value;
-use function Pmld\data_get;
 
 class Arr
 {

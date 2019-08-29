@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Notifications\Notice;
+namespace Rumur\Pimpled\Notifications\Notice;
 
 use \Exception;
 

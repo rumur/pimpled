@@ -1,22 +1,22 @@
 <?php
 
-namespace Pmld\Foundation\Bootstrap;
+namespace Rumur\Pimpled\Foundation\Bootstrap;
 
-use Pmld\Foundation\Application;
+use Rumur\Pimpled\Foundation\Application;
 
 class HandleExceptions
 {
     /**
      * The application instance.
      *
-     * @var \Pmld\Foundation\Application
+     * @var \Rumur\Pimpled\Foundation\Application
      */
     protected $app;
 
     /**
      * Bootstrap the given application.
      *
-     * @param  \Pmld\Foundation\Application  $app
+     * @param  \Rumur\Pimpled\Foundation\Application  $app
      * @return void
      */
     public function bootstrap(Application $app)

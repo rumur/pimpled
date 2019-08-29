@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Foundation;
+namespace Rumur\Pimpled\Foundation;
 
 class HooksRepository
 {

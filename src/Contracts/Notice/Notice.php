@@ -1,5 +1,5 @@
 <?php
-namespace Pmld\Contracts\Notice;
+namespace Rumur\Pimpled\Contracts\Notice;
 
 interface Notice
 {

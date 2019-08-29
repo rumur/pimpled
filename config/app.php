@@ -1,8 +1,8 @@
 <?php
 
-defined('ABSPATH') or die();
+use function Rumur\Pimpled\Support\app;
 
-use function \Pmld\app;
+defined('ABSPATH') or die();
 
 return [
     /*
@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'env' => 'development',
+    'env' => 'production',//'development',
 
     /*
     |--------------------------------------------------------------------------
@@ -41,15 +41,28 @@ return [
     */
 
     'providers' => array_merge( [
-        \Pmld\Notifications\Notice\NoticeService::class,
-        \Pmld\Http\RequestService::class,
-        \Pmld\Http\ResponseService::class,
-        \Pmld\Http\RestRoutesService::class,
-        \Pmld\Foundation\Asset\AssetService::class,
-    ], apply_filters('pmld.app_service_providers', [
-        \Pmld\App\Migrations\Aggregator::class,
-        \Pmld\App\Assets\Aggregator::class,
+        Pmld\App\Providers\RouteServiceProvider::class,
+        Rumur\Pimpled\Scheduling\SchedulingServiceProvider::class,
+        Rumur\Pimpled\Mail\MailServiceProvider::class,
+        Rumur\Pimpled\View\ViewServiceProvider::class,
+//        Rumur\Pimpled\Notifications\Notice\NoticeService::class,
+//        Rumur\Pimpled\Foundation\Asset\AssetService::class,
+    ], apply_filters('pmld.config.app_providers', [
+//        Rumur\Pimpled\App\Migrations\Aggregator::class,
+//        Rumur\Pimpled\App\Assets\Aggregator::class,
     ] ) ),
+
+    /*
+    |--------------------------------------------------------------------------
+    | The Application Hooks
+    |--------------------------------------------------------------------------
+    |
+    | This is the list of Hooks.
+    |
+    */
+    'hooks' => [
+        Pmld\App\Hooks\DummyHook::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------

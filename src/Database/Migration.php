@@ -1,10 +1,10 @@
 <?php
 
-namespace Pmld\Database;
+namespace Rumur\Pimpled\Database;
 
 use Pimple\Container;
-use Pmld\Support\ServiceProvider;
-use Pmld\Contracts\Database\Migration as MigrationContract;
+use Rumur\Pimpled\Support\ServiceProvider;
+use Rumur\Pimpled\Contracts\Database\Migration as MigrationContract;
 
 abstract class Migration extends ServiceProvider implements MigrationContract
 {
@@ -24,17 +24,17 @@ abstract class Migration extends ServiceProvider implements MigrationContract
         $this->app = $app;
 
         /** Run migration in forced mode */
-        \add_action('pmld.plugin_migration', function() {
+        \add_action('pmld.database.migration', function() {
             $this->loadDependenciesWith('force');
         });
 
         /** Run migration when plugin is activating */
-        \add_action('pmld.plugin_activation', function() {
+        \add_action('pmld.database.activation', function() {
             $this->loadDependenciesWith('up');
         });
 
         /** Run migration when plugin is uninstalling */
-        \add_action('pmld.plugin_uninstall', function() {
+        \add_action('pmld.database.uninstall', function() {
             $this->loadDependenciesWith('down');
         });
     }

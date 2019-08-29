@@ -1,9 +1,9 @@
 <?php
 
-namespace Pmld\Foundation\Bootstrap;
+namespace Rumur\Pimpled\Foundation\Bootstrap;
 
-use Pmld\Foundation\Application;
-use Pmld\Support\Facades\Facade;
+use Rumur\Pimpled\Foundation\Application;
+use Rumur\Pimpled\Support\Facades\Facade;
 
 class RegisterFacades
 {

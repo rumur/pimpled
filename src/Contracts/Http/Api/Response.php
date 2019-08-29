@@ -1,6 +1,6 @@
 <?php
 
-namespace Pmld\Contracts\Http\Api;
+namespace Rumur\Pimpled\Contracts\Http\Api;
 
 interface Response
 {

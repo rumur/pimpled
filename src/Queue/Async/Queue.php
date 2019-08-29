@@ -1,8 +1,8 @@
 <?php
 
-namespace Pmld\Queue;
+namespace Rumur\Pimpled\Queue;
 
-use Pmld\Contracts\Queue\Queue as QueueContract;
+use Rumur\Pimpled\Contracts\Queue\Queue as QueueContract;
 
 abstract class Queue extends Job implements QueueContract
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Pmld\Notifications\Notice;
+namespace Rumur\Pimpled\Notifications\Notice;
 
 use Pimple\Container;
-use Pmld\Support\ServiceProvider;
+use Rumur\Pimpled\Support\ServiceProvider;
 
 class NoticeService extends ServiceProvider
 {

@@ -1,0 +1,38 @@
+{
+  "name": "pimpled/support",
+  "description": "The Pimpled Support package.",
+  "license": "MIT",
+  "homepage": "https://github.com/rumur/pimpled",
+  "support": {
+    "issues": "https://github.com/pimpled/framework/issues",
+    "source": "https://github.com/pimpled/framework"
+  },
+  "authors": [
+    {
+      "name": "Ruslan Murarov",
+      "email": "rumur.dev@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.0",
+    "ext-mbstring": "*",
+    "pimpled/contracts": "1.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pmld\\Support\\": ""
+    },
+    "files": [
+      "helpers.php"
+    ]
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev"
+}

@@ -1,8 +1,8 @@
 <?php
 
-namespace Pmld\Foundation\Bootstrap;
+namespace Rumur\Pimpled\Foundation\Bootstrap;
 
-use Pmld\Foundation\Application;
+use Rumur\Pimpled\Foundation\Application;
 
 class RegisterProviders
 {

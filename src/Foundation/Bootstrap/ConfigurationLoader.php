@@ -1,11 +1,11 @@
 <?php
 
-namespace Pmld\Foundation\Bootstrap;
+namespace Rumur\Pimpled\Foundation\Bootstrap;
 
 use Exception;
-use Pmld\Config\Repository;
-use Pmld\Foundation\Application;
-use Pmld\Contracts\Config\Repository as RepositoryContract;
+use Rumur\Pimpled\Config\Repository;
+use Rumur\Pimpled\Foundation\Application;
+use Rumur\Pimpled\Contracts\Config\Repository as RepositoryContract;
 
 class ConfigurationLoader
 {
