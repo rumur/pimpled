@@ -48,8 +48,7 @@ class Resolver
 
             if ($is_allowed && !is_wp_error($is_allowed)) {
                 // If we passed a permission we echoing the result and die
-                echo call_user_func_array($this->makeHandler($route->getHandler()), $args);
-                die;
+                return call_user_func_array($this->makeHandler($route->getHandler()), $args);
             }
 
             // Picking the right Exception from the available ones.

@@ -199,8 +199,9 @@ class HttpRouter extends Router
                             $response = apply_filters('pmld.routing.dispatcher_response',
                                 call_user_func_array($route->getCallback(), $params), $params, $route, $this);
 
-                            if ($response instanceof View) {
-                                echo $response; die;
+                            if ($response instanceof View || is_string($response)) {
+                                echo $response;
+                                die;
                             }
 
                             if ($response instanceof Redirector) {
@@ -209,7 +210,7 @@ class HttpRouter extends Router
 
                             /**
                              * @param mixed $response
-                             * @param Http_Router $this
+                             * @param HttpRouter $this
                              */
                             do_action('pmld.routing.dispatch_response', $response, $this);
                         });
