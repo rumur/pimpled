@@ -169,6 +169,8 @@ class HttpRouter extends Router
     }
 
     /**
+     * @TODO Move it to a Dispatcher class
+     *
      * Resolver of the route content.
      */
     protected function registerDispatcher()
@@ -176,7 +178,6 @@ class HttpRouter extends Router
         if ($this->dispatcher) {
             call_user_func($this->dispatcher, $this);
         } else {
-
             add_filter('request', function (array $query_vars) {
 
                 if ($route_id = $query_vars["is_{$this->prefix()}_route"] ?? false) {
