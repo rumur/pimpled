@@ -3,6 +3,7 @@
 namespace Rumur\Pimpled\View;
 
 use ArrayAccess;
+use Rumur\Pimpled\Support\Traits\DigestArrayableData;
 use RuntimeException;
 use InvalidArgumentException;
 use Rumur\Pimpled\Support\Arr;
@@ -13,6 +14,8 @@ use Rumur\Pimpled\Contracts\View\View as ViewContract;
 
 class View implements ViewContract, ArrayAccess
 {
+    use DigestArrayableData;
+
     /**
      * The name of the view.
      *
@@ -61,7 +64,7 @@ class View implements ViewContract, ArrayAccess
         $this->view = $view;
         $this->factory = $factory;
 
-        $this->data = $data instanceof Arrayable ? $data->toArray() : (array) $data;
+        $this->data = $this->getArraybleData($data);
     }
 
     /**
@@ -270,12 +273,13 @@ class View implements ViewContract, ArrayAccess
     }
 
     /**
-     * @param array $errors
+     * @param Arrayable | array $errors
      * @return $this
      */
     public function withErrors($errors = []): View
     {
-        return $this->with(['errors' => apply_filters("pmld.view.{$this->view}_with_errors", $errors, $this)]);
+        return $this->with(['errors' => apply_filters("pmld.view.{$this->view}_with_errors",
+            $this->getArraybleData($errors), $this)]);
     }
 
     /**
