@@ -220,7 +220,7 @@ if (!function_exists('data_get')) {
     }
 }
 
-if (!function_exists('data_get')) {
+if (!function_exists('data_set')) {
     /**
      * Set an item on an array or object using dot notation.
      *
