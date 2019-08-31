@@ -6,6 +6,7 @@ use Closure;
 use InvalidArgumentException;
 use Rumur\Pimpled\Contracts\Routing\Route as RouteContract;
 use Rumur\Pimpled\Contracts\Support\Arrayable;
+use Rumur\Pimpled\Support\Traits\DigestArrayableData;
 
 /**
  * Class Route
@@ -16,6 +17,8 @@ use Rumur\Pimpled\Contracts\Support\Arrayable;
  */
 class Route implements RouteContract
 {
+    use DigestArrayableData;
+
     /** @var string */
     protected $id;
 
@@ -247,10 +250,7 @@ class Route implements RouteContract
         // Sorted with raw params order
         // All missed parameters will be replaced with the original placeholder.
         $this->parameters = array_merge($this->paramsWithUrlPlaceholder(),
-            array_map('urlencode',
-                array_filter($parameters instanceof Arrayable ? $parameters->toArray() : (array)$parameters)
-            )
-        );
+            array_map('urlencode', array_filter($this->getArraybleData($parameters))));
 
         return $this;
     }
