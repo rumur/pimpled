@@ -15,8 +15,8 @@ use IteratorAggregate;
 use Rumur\Pimpled\Contracts\Support\Arrayable;
 use Rumur\Pimpled\Contracts\Support\Jsonable;
 
-use function Rumur\Pimpled\value;
-use function Rumur\Pimpled\data_get;
+use function Rumur\Pimpled\Support\value;
+use function Rumur\Pimpled\Support\data_get;
 
 /**
  * @property-read HigherOrderCollectionProxy $average
