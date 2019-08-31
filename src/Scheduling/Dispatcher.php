@@ -3,12 +3,16 @@
 namespace Rumur\Pimpled\Scheduling;
 
 use Closure;
-use \Rumur\Pimpled\Contracts\Scheduling\Job as JobContract;
-use Rumur\Pimpled\Contracts\Support\Arrayable;
+use Psr\Log\InvalidArgumentException;
 use Rumur\Pimpled\Support\Collection;
+use Rumur\Pimpled\Contracts\Support\Arrayable;
+use Rumur\Pimpled\Support\Traits\DigestArrayableData;
+use Rumur\Pimpled\Contracts\Scheduling\Job as JobContract;
 
 class Dispatcher
 {
+    use DigestArrayableData;
+
     /**
      * @var Closure
      */
@@ -57,13 +61,35 @@ class Dispatcher
     }
 
     /**
-     * @param JobContract $job
+     * @param JobContract || callable $job
      *
-     * @param array $args
+     * @param Arrayable | array $args
+     *
+     * @throws \Throwable
      */
-    public function dispatch(JobContract $job)
+    public function dispatch($job, $args = [])
     {
-        error_log(print_r(func_get_args()));
+        try {
+
+            $args = $this->getArraybleData($args);
+
+            do_action('pmld.scheduling.before_dispatch', $job, $args);
+
+            if (class_exists($job)) {
+                call_user_func_array([new $job, 'handle'], $args);
+            } elseif (is_callable($job)) {
+                call_user_func_array($job, $args);
+            } else {
+                 new InvalidArgumentException('Invalid job');
+            }
+
+            do_action('pmld.scheduling.after_dispatch', $job, $args);
+
+        } catch (\Throwable $e) {
+            do_action('pmld.scheduling.dispatched_failed', $job, $args, $e);
+            do_action('pmld.scheduling.dispatched_failed_' . current_action(), $job, $args, $e);
+            throw $e;
+        }
     }
 
     /**
@@ -93,22 +119,6 @@ class Dispatcher
      */
     public function __invoke($job, $args)
     {
-        try {
-
-            do_action('pmld.scheduling.before_dispatch', $job, $args);
-
-            if (class_exists($job)) {
-                call_user_func_array([new $job, 'handle'], $args);
-            } elseif (is_callable($job)) {
-                call_user_func_array($job, $args);
-            }
-
-            do_action('pmld.scheduling.after_dispatch', $job, $args);
-
-        } catch (\Throwable $e) {
-            do_action('pmld.scheduling.dispatched_failed', $job, $args, $e);
-            do_action('pmld.scheduling.dispatched_failed_' . current_action(), $job, $args, $e);
-            throw $e;
-        }
+        $this->dispatch($job, $args);
     }
 }
