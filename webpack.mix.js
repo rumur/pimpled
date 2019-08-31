@@ -25,8 +25,8 @@ const desire = (dependency, fallback) => {
 const resolve = (dir) => path.join(__dirname, '..', dir);
 
 const userConfig = merge(
-  desire(`${__dirname}/resources/assets/config`),
-  desire(`${__dirname}/resources/assets/config-local`)
+  desire(`${__dirname}/resources/assets/config.dist`),
+  desire(`${__dirname}/resources/assets/config`)
 );
 
 /*
@@ -48,11 +48,20 @@ mix
   .webpackConfig({
     externals: {
       jquery: 'jQuery',
-    },
-    resolve: {
-      alias: {
-        '@': resolve(`${userConfig.assets}/js/vue`),
-      }
+      'lodash': 'lodash',
+      'react': 'React',
+      'react-dom': 'ReactDOM',
+      '@wordpress/blocks': 'wp.blocks',
+      '@wordpress/block-editor': 'wp.blockEditor',
+      '@wordpress/components': 'wp.components',
+      '@wordpress/compose': 'wp.compose',
+      '@wordpress/data': 'wp.data',
+      '@wordpress/date': 'wp.date',
+      '@wordpress/editor': 'wp.editor',
+      '@wordpress/element': 'wp.element',
+      '@wordpress/hooks': 'wp.hooks',
+      '@wordpress/i18n': 'wp.i18n',
+      '@wordpress/plugins': 'wp.plugins'
     },
     devtool: ( ! isProd ? userConfig.sourceMap : undefined),
     plugins: [
@@ -67,19 +76,34 @@ mix
       ], {verbose: false})
     ],
     ...( isHotMode
-      ? { devServer: { contentBase: path.resolve(__dirname, userConfig.publicPath) } }
-      : {}
+        ? { devServer: { contentBase: path.resolve(__dirname, userConfig.publicPath) } }
+        : {}
     )
-  })
-  .sass(`${userConfig.assets}/scss/app.scss`, 'dist/css/app.css')
-  .sass(`${userConfig.assets}/scss/main.scss`, 'dist/css/main.css')
-  .sass(`${userConfig.assets}/scss/admin.scss`, 'dist/css/admin.css')
+  });
+
+
+// Babel
+mix.babelConfig({
+  'plugins': [
+    [
+      '@wordpress/babel-plugin-makepot', { 'output': 'languages/blocks.pot' },
+    ],
+  ],
+});
+
+// Common Assets
+mix.sass(`${userConfig.assets}/scss/app.scss`, `${userConfig.publicPath}/css/app.css`)
+  .sass(`${userConfig.assets}/scss/main.scss`, `${userConfig.publicPath}/css/main.css`)
+  .sass(`${userConfig.assets}/scss/admin.scss`, `${userConfig.publicPath}/css/admin.css`)
   .options({processCssUrls: false, /* it keeps the relative urls */})
-  .js(`${userConfig.assets}/js/main.js`, 'dist/js/main.js')
-  .js(`${userConfig.assets}/js/app.js`, 'dist/js/app.js')
+  .js(`${userConfig.assets}/js/main.js`, `${userConfig.publicPath}/js/main.js`)
+  .js(`${userConfig.assets}/js/app.js`, `${userConfig.publicPath}/js/app.js`)
   .extract(userConfig.extract)
   .copyDirectory(`${userConfig.assets}/images`, `${userConfig.publicPath}/images`)
   .copyDirectory(`${userConfig.assets}/fonts`, `${userConfig.publicPath}/fonts`);
+
+// Blocks
+mix.react(`${userConfig.assets}/js/blocks.js`, `${userConfig.publicPath}/js/blocks.js`);
 
 if (! userConfig.buildNotifications) {
   mix.disableNotifications();
@@ -91,7 +115,7 @@ switch(true) {
     // Adds versions to the all assets and /img content as well.
     mix.version();
     mix.version([`${userConfig.publicPath}/images`]);
-  break;
+    break;
 
   case isWatchMode:
     // Runs the Watch mode.
@@ -100,11 +124,11 @@ switch(true) {
       files: userConfig.watch,
     });
     mix.sourceMaps();
-  break;
+    break;
 
   default:
     // Default
-  break;
+    break;
 }
 
 // Full API

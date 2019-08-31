@@ -11,7 +11,7 @@ vendor
 /dist
 
 # Dev
-config-local.json
+config.json
 yarn.lock
 composer.lock
 

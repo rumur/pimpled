@@ -5,13 +5,11 @@
   "buildNotifications": true,
   "sourceMap": "cheap-module-source-map",
   "extract": [
-    "vue",
-    "axios",
     "lodash"
   ],
   "watch": [
     "./dist/css/*.css",
     "./dist/js/*.*",
-    "app/**/*.php"
+    "./resources/views/*.php"
   ]
 }

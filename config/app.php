@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'env' => 'production',//'development',
+    'env' => 'development',
 
     /*
     |--------------------------------------------------------------------------
@@ -41,13 +41,14 @@ return [
     */
 
     'providers' => array_merge( [
-        Pmld\App\Providers\RouteServiceProvider::class,
-        Rumur\Pimpled\Scheduling\SchedulingServiceProvider::class,
         Rumur\Pimpled\Mail\MailServiceProvider::class,
         Rumur\Pimpled\View\ViewServiceProvider::class,
-//        Rumur\Pimpled\Notifications\Notice\NoticeService::class,
+        Rumur\Pimpled\Scheduling\SchedulingServiceProvider::class,
+        Rumur\Pimpled\Notifications\Notice\NoticeService::class,
 //        Rumur\Pimpled\Foundation\Asset\AssetService::class,
     ], apply_filters('pmld.config.app_providers', [
+        Pmld\App\Providers\AppServiceProvider::class,
+        Pmld\App\Providers\RouteServiceProvider::class,
 //        Rumur\Pimpled\App\Migrations\Aggregator::class,
 //        Rumur\Pimpled\App\Assets\Aggregator::class,
     ] ) ),
@@ -62,6 +63,18 @@ return [
     */
     'hooks' => [
         Pmld\App\Hooks\DummyHook::class,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | The Application Server Side rendered Gutenberg blocks
+    |--------------------------------------------------------------------------
+    |
+    | This is the list of Blocks.
+    |
+    */
+    'blocks' => [
+        // ...
     ],
 
     /*
