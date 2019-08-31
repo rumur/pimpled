@@ -96,7 +96,7 @@ class Mailer
     protected $failed_listeners = [];
 
     /**
-     * EP\Email constructor.
+     * Mailer constructor.
      *
      * @param string $to Comma Separated Email where to sent to
      * @param string $subject Subject of the email
@@ -121,7 +121,7 @@ class Mailer
      * Factory method for chaining.
      *
      * Example:
-     *      EP\Email::make('johndou@examle.com', 'Activation for <{first_name} {last_name}>', 'Hello {first_name} {last_name}')
+     *      Mailer::make('johndou@examle.com', 'Activation for <{first_name} {last_name}>', 'Hello {first_name} {last_name}')
      *          ->setPlaceholders([
      *              '{first_name}' => 'John',
      *              '{last_name}' => 'Dou',
@@ -131,10 +131,10 @@ class Mailer
      *          ->setFromEmail('admin@example.com')
      *          ->setFromName('Administration')
      *          ->sendWhen(is_user_logged_in())
-     *          ->onSuccess(function (EP\Email $email) {
-     *              EP\Email::make('admin@examle.com', 'Activation link sent to <{first_name} {last_name}>', 'User: {first_name} {last_name} received the email.')
+     *          ->onSuccess(function (Mailer $email) {
+     *              Mailer::make('admin@examle.com', 'Activation link sent to <{first_name} {last_name}>', 'User: {first_name} {last_name} received the email.')
      *                  ->setPlaceholders($email->placeholders())->send();
-     *          })->onFailure(function (EP\Email $email, WP_Error $reason) {
+     *          })->onFailure(function (Mailer $email, WP_Error $reason) {
      *              // log error here
      *          });
      *
